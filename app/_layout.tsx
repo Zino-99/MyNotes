@@ -50,9 +50,30 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" options={{ title: 'Accueil'}} />
+        <Stack.Screen 
+          name="notes" 
+          options={{ 
+            title: 'Mes Notes',
+            headerBackVisible: false // Cache le bouton retour
+          }} 
+        />
+        <Stack.Screen 
+          name="form" 
+          options={{ 
+            title: 'Nouvelle Note',
+            headerBackVisible: false, // Cache le bouton retour
+            presentation: 'modal' // Optionnel pour un effet modal
+          }} 
+        />
+        <Stack.Screen 
+          name="note/[id]" 
+          options={{ 
+            title: 'Détails',
+            headerBackVisible: false // Cache le bouton retour
+          }} 
+        />
       </Stack>
     </ThemeProvider>
   );
